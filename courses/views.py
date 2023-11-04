@@ -17,12 +17,12 @@ def all_courses(request):
 
 
 def course_detail(request, course_id):
-    # A view to show individual product details
+    # A view to show individual course details
 
     course = get_object_or_404(Course, pk=course_id)
 
     context = {
-        'courses': courses,
+        'course': course,
     }
 
-    return render(request, 'course/course_detail.html', context)
+    return render(request, 'courses/course_detail.html', context)
