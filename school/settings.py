@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'home',
+    'courses',
 ]
 
 MIDDLEWARE = [
@@ -151,6 +152,13 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+EMBED_VIDEO_BACKENDS = (
+    'embed_video.backends.YoutubeBackend',
+    'embed_video.backends.VimeoBackend',
+    'embed_video.backends.SoundCloudBackend',
+    'my_app.backends.CustomBackend',
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
