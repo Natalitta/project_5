@@ -22,9 +22,14 @@ body {
 .main-logo {
     color: #ab9287;
 }
+
 .banner {
     background: #2596be;
     color: #f8f9fa;
+}
+.banner-free {
+   color: #2596be;
+   background: #ab9287;
 }
 
 .main-logo-link {

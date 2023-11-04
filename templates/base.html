@@ -101,10 +101,14 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    
+                    {% include 'includes/mobile-top-header.html' %}
+                    {% include 'includes/main-nav.html' %}   
                 </nav>
             </div>
             <div id="delivery-banner" class="row text-center">
+                <div class="col banner-free">
+                    <h4 class="logo-font my-1">Free introductory courses!</h4>                
+                </div> 
                 <div class="col banner">
                     <h4 class="logo-font my-1">Free master-class on courses over &euro; {{ free_delivery_threshold }}!</h4>                
                 </div>            
