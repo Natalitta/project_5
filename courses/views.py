@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Course, Category
@@ -17,13 +17,13 @@ def all_courses(request):
     direction = None
 
     if request.GET:
-        """
+
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
             if sortkey == 'name':
                 sortkey = 'lower_name'
-                products = courses.annotate(lower_name=Lower('name'))
+                courses = courses.annotate(lower_name=Lower('name'))
 
             if sortkey == 'category':
                 sortkey = 'category__name'
@@ -33,7 +33,7 @@ def all_courses(request):
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             courses = courses.order_by(sortkey)
-"""
+
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             courses = courses.filter(category__name__in=categories)
@@ -48,13 +48,13 @@ def all_courses(request):
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             courses = courses.filter(queries)
 
-    # current_sorting = f'{sort}_{direction}'
+    current_sorting = f'{sort}_{direction}'
 
     context = {
         'courses': courses,
         'search_term': query,
         'current_categories': categories,
-        # 'current_sorting': current_sorting,
+        'current_sorting': current_sorting,
     }
 
     return render(request, 'courses/courses.html', context)
