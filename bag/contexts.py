@@ -10,16 +10,15 @@ def bag_contents(request):
     course_count = 0
     bag = request.session.get('bag', {})
 
-    for item_id, item_data in bag.items():
-        if isinstance(item_data, int):
-            course = get_object_or_404(Course, pk=item_id)
-            total += item_data * course.price
-            course_count += item_data
-            bag_items.append({
-                'item_id': item_id,
-                'quantity': item_data,
-                'course': course,
-            })
+    for item_id, quantity in bag.items():
+        course = get_object_or_404(Course, pk=item_id)
+        total += quantity * course.price
+        course_count += quantity
+        bag_items.append({
+            'item_id': item_id,
+            'quantity': quantity,
+            'course': course,
+        })
 
     # to open an MC if total is 100 or more
     if total >= settings.FREE_MC_THRESHOLD:
