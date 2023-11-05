@@ -15,11 +15,11 @@
         <div class="row">
             <div class="col text-center mt-3">
                 <h2 class="">Courses</h2>
-                {% for c in current_categories %}
+                <!--{% for c in current_categories %}
                     <a class="category-badge text-decoration-none" href="{% url 'courses' %}?category={{ c.name }}">
                         <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ c.friendly_name }}</span>
                     </a>
-                {% endfor %}
+                {% endfor %}-->
                 <hr class="w-50 mb-1">
             </div>
         </div>
@@ -71,7 +71,7 @@
                                             {% if course.category %}
                                             <p class="small mt-1 mb-0">
                                                 <a class="text-muted" href="{% url 'courses' %}?category={{ course.category.name }}">
-                                                    <i class="fas fa-tag mr-1"></i>{{ course.category.friendly_name }}
+                                                    <i class="fas fa-palette mr-1"></i>{{ course.category.friendly_name }}
                                                 </a>
                                             </p>
                                             {% endif %}
@@ -111,9 +111,9 @@
             </div>
         </div>
     </div>
-    <div class="btt-button shadow-sm rounded-0 border border-black">
+    <div class="btt-button shadow-sm rounded border">
         <a class="btt-link d-flex h-100">
-            <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
+            <i class="fas fa-chevron-up mx-auto my-auto"></i>
         </a>	
     </div>
 {% endblock %}
