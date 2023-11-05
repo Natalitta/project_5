@@ -46,7 +46,7 @@
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0"><strong>{{ item.course.name }}</strong></p>
-                                        <p class="my-0 small text-muted">SKU: {{ item.course.sku|upper }}</p>
+                                        <p class="my-0 small text-muted">SKU: {{ item.course.sku|lower }}</p>
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">€{{ item.course.price }}</p>
@@ -60,12 +60,37 @@
                                     </td>
                                 </tr>
                             {% endfor %}
+                            {% if free_mc %}
+                            <tr>
+                                <td class="p-3 w-25">
+                                    {% if item.course.image %}
+                                    <img class="img-fluid rounded" src="{{ MEDIA_URL }}gift-mc.jpg" alt="Sunset in the Mountains">
+                                    {% else %}
+                                    <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="Sunset in the Mountains">
+                                    {% endif %}
+                                </td>
+                                <td class="py-3">
+                                    <p class="my-0"><strong>Sunset in the Mountains</strong></p>
+                                    <p class="my-0 small text-muted">SKU: gift-mc </p>
+                                </td>
+                                <td class="py-3">
+                                    <p class="my-0">€0.00</p>
+                                </td>
+                                <td class="py-3 w-25">
+                                    <a class="update-link text-info"><small>Update</small></a>
+                                    <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-course-size="{{ item.size }}"><small>Remove</small></a>
+                                </td>
+                                <td class="py-3">
+                                    <p class="my-0"></p>
+                                </td>
+                            </tr>
+                            {% endif %}
                             <tr>
                                 <td colspan="5" class="pt-5 text-right">
                                     <h6><strong>Bag Total: €{{ total|floatformat:2 }}</strong></h6>
                                     <h6><i class="fas fa-gift fa-lg"></i> Free master-class: <strong>Sunset in the Mountains</strong></h6>
                                     <h4 class="mt-4"><strong>Total: €{{ total|floatformat:2 }}</strong></h4>
-                                    {% if free_delivery_delta > 0 %}
+                                    {% if free_mc_delta > 0 %}
                                         <p class="mb-1 text-danger">
                                             You could get a free master-class by spending just <strong>€{{ free_delivery_delta }}</strong> more!
                                         </p>
