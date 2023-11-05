@@ -21,14 +21,19 @@ def bag_contents(request):
         })
 
     # to open an MC if total is 100 or more
-    if total >= settings.FREE_MC_THRESHOLD:
-        gift_course = True
+    if total < settings.FREE_MC_THRESHOLD:
+        free_mc_delta = settings.FREE_MC_THRESHOLD - total
+    else:
+        free_mc = get_object_or_404(Course, pk=1)
+        free_mc.price = 0
+        free_mc_delta = 0
 
     context = {
         'bag_items': bag_items,
         'total': total,
         'course_count': course_count,
         'free_mc_threshold': settings.FREE_MC_THRESHOLD,
+        'free_mc': free_mc,
     }
 
     return context
