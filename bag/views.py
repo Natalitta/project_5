@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
-# from django.contrib import messages
+from django.contrib import messages
 
 from courses.models import Course
 
@@ -19,6 +19,7 @@ def add_to_bag(request, item_id):
         bag[item_id] += quantity
     else:
         bag[item_id] = quantity
+        messages.success(request, f'Added {course.name} to your bag')
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
@@ -32,6 +33,7 @@ def remove_from_bag(request, item_id):
         bag = request.session.get('bag', {})
 
         bag.pop(item_id)
+        messages.success(request, f'Removed {course.name} from your bag')
 
         request.session['bag'] = bag
         return HttpResponse(status=200)
