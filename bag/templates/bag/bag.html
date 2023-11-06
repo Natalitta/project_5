@@ -52,11 +52,10 @@
                                         <p class="my-0">€{{ item.course.price }}</p>
                                     </td>
                                     <td class="py-3 w-25">
-                                        <a class="update-link text-info"><small>Update</small></a>
-                                        <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-course-size="{{ item.size }}"><small>Remove</small></a>
-                                    </td>
-                                    <td class="py-3">
-                                        <p class="my-0"></p>
+                                        <form class="form update-form" method="POST" action="{% url 'remove_from_bag' item.item_id %}">
+                                            {% csrf_token %}
+                                        <a class="remove-button text-danger float-right" id="remove_{{ item.item_id }}"><small><i class="fa-solid fa-trash"></i> Remove</small></a>
+                                        </form>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -76,13 +75,6 @@
                                 <td class="py-3">
                                     <p class="my-0">€0.00</p>
                                 </td>
-                                <td class="py-3 w-25">
-                                    <a class="update-link text-info"><small>Update</small></a>
-                                    <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-course-size="{{ item.size }}"><small>Remove</small></a>
-                                </td>
-                                <td class="py-3">
-                                    <p class="my-0"></p>
-                                </td>
                             </tr>
                             {% endif %}
                             <tr>
@@ -99,16 +91,16 @@
                             </tr>
                             <tr>
                                 <td colspan="5" class="text-right">
-                                    <a href="{% url 'courses' %}" class="btn btn-outline-black rounded btn-lg">
+                                    <a href="{% url 'courses' %}" class="btn btn-blue rounded btn-lg">
                                         <span class="icon">
-                                            <i class="fas fa-chevron-left"></i>
+                                            <i class="fa-solid fa-chevron-left"></i>
                                         </span>
                                         <span class="text-uppercase">Add a course</span>
                                     </a>
                                     <a href="#" class="btn btn-black rounded btn-lg">
                                         <span class="text-uppercase">Secure Checkout</span>
                                         <span class="icon">
-                                            <i class="fas fa-lock"></i>
+                                            <i class="fa-solid fa-lock"></i>
                                         </span>
                                     </a>
                                 </td>
@@ -118,9 +110,9 @@
                     </div>
                 {% else %}
                     <p class="lead mb-5">Your bag is empty.</p>
-                    <a href="{% url 'courses' %}" class="btn btn-outline-black rounded btn-lg">
+                    <a href="{% url 'courses' %}" class="btn btn-blue rounded btn-lg">
                         <span class="icon">
-                            <i class="fas fa-search"></i>
+                            <i class="fa-solid fa-search"></i>
                         </span>
                         <span class="text-uppercase">Find a course</span>
                     </a>
@@ -134,19 +126,12 @@
 {{ block.super }}
 
 <script type="text/javascript">
-    // Update quantity on click
-    $('.update-link').click(function(e) {
-        var form = $(this).prev('.update-form');
-        form.submit();
-    })
 
     // Remove item and reload on click
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var size = $(this).data('product_size');
         var url = `/bag/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
+        var data = {'csrfmiddlewaretoken': csrfToken};
 
         $.post(url, data)
          .done(function() {

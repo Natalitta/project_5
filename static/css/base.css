@@ -64,7 +64,7 @@ body {
 .btn-outline-black:hover,
 .btn-outline-black:active,
 .btn-outline-black:focus {
-    background: black;
+    background: #ab9287;
     color: white !important;
 }
 
@@ -74,7 +74,7 @@ body {
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: #222;
+    background: #ab9287;
     color: white;
 }
 
@@ -114,8 +114,8 @@ a.category-badge > span.badge:hover {
 }
 
 .btt-link,
-.update-link,
-.remove-item {
+.update-button,
+.remove-button {
     cursor: pointer;
 }
 
