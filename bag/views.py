@@ -11,6 +11,7 @@ def view_bag(request):
 
 def add_to_bag(request, item_id):
     # To add a course to the bag
+    course = get_object_or_404(Course, pk=item_id)
     quantity = 1
     redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})
@@ -19,13 +20,13 @@ def add_to_bag(request, item_id):
         bag[item_id] += quantity
     else:
         bag[item_id] = quantity
-        messages.success(request, f'Added {course.name} to your bag')
+        messages.success(request, f'Added the course {course.name} to your bag')
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
 
 
-def remove_from_bag(request, item_id):
+def remove_bag_item(request, item_id):
     # Remove an item from the shopping bag
 
     course = get_object_or_404(Course, pk=item_id)
@@ -33,10 +34,11 @@ def remove_from_bag(request, item_id):
         bag = request.session.get('bag', {})
 
         bag.pop(item_id)
-        messages.success(request, f'Removed {course.name} from your bag')
+        messages.success(request, f'Removed the course {course.name} from your bag')
 
         request.session['bag'] = bag
-        return HttpResponse(status=200)
+        # return HttpResponse(status=200)    
+        return redirect(reverse('view_bag'))
 
     except Exception as e:
         return HttpResponse(status=500)

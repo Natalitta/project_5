@@ -8,6 +8,7 @@ def bag_contents(request):
     bag_items = []
     total = 0
     course_count = 0
+    free_mc = False
     bag = request.session.get('bag', {})
 
     for item_id, quantity in bag.items():
@@ -20,7 +21,7 @@ def bag_contents(request):
             'course': course,
         })
 
-    # to open an MC if total is 100 or more
+    # to calculate delta to pay to get a free MC if total is 99 or more
     if total < settings.FREE_MC_THRESHOLD:
         free_mc_delta = settings.FREE_MC_THRESHOLD - total
     else:
@@ -33,6 +34,7 @@ def bag_contents(request):
         'total': total,
         'course_count': course_count,
         'free_mc_threshold': settings.FREE_MC_THRESHOLD,
+        'free_mc_delta': free_mc_delta,
         'free_mc': free_mc,
     }
 
