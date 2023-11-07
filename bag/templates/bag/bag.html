@@ -128,22 +128,3 @@
         </div>
     </div>
 {% endblock %}
-
-{% block postloadjs %}
-{{ block.super }}
-
-<script type="text/javascript">
-
-    // Remove item and reload on click
-    $('.remove-item').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var url = `/bag/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken};
-
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    })
-</script>
-{% endblock %}
