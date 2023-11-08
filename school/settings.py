@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-hnvkj+6o)k=d+2&bs3!aai+0j+8#flgo5d3xb=28r09!th$=%&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-natalitta-project5-iszet7v4jhi.ws-eu105.gitpod.io']
+ALLOWED_HOSTS = ['8000-natalitta-project5-iszet7v4jhi.ws-eu106.gitpod.io']
 
 
 # Application definition
@@ -80,6 +80,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
                 'bag.contexts.bag_contents',
             ],
             'builtins': [

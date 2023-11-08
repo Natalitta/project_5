@@ -10,8 +10,8 @@ from .forms import OrderForm
 #from profiles.models import UserProfile
 #from bag.contexts import bag_contents
 
-import stripe
-import json
+#import stripe
+#import json
 
 
 # Create your views here.
@@ -25,7 +25,7 @@ def checkout(request):
         messages.error(request, "Your bag is empty")
         return redirect(reverse('courses'))
 
-    order_form = OrderForm(form_data)
+    order_form = OrderForm()
 
     template = 'checkout/checkout.html'
     context = {
