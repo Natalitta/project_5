@@ -62,49 +62,38 @@
                     </table>
                 </div>
             </div>
-            <a href="#" class="btn btn-blue rounded">
-                <span class="icon">
-                    <i class="fas fa-chevron-left"></i>
-                </span>
-                <span class="font-weight-bold">Start</span>
-            </a>
             <div class="col-12 col-lg-4">
-                <p class="text-muted"><i class="fa-solid fa-heart text-danger"></i> My Wishlist</p>
-                <div class="order-history table-responsive">
-                    {{ courses }}
-                    <table class="table table-sm table-borderless">
-                        <thead>
-                            <tr>
-                                <th> </th>
-                                <th> </th>
-                                <th>Course</th>
-                                <th>Category</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for order in orders %}
-                                <tr>
-                                    <td><!--
-                                        <a href="{% url 'order_history' order.order_number %}"
-                                        title="{{ order.order_number }}">
-                                            {{ order.order_number|truncatechars:6 }}
-                                        </a>-->
-                                    </td>
-                                    <td>{{ order.date }}</td>
-                                    <td>
-                                        <ul class="list-unstyled">
-                                            {% for item in order.items.all %}
-                                                <li class="small">
-                                                    {{ item.course.name }}
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </td>
-                                    <td>${{ order.total }}</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                <p class="text-muted text-right"><i class="fa-solid fa-heart text-danger"></i> My Wishlist</p>
+                <div class="row">
+                    <div class="col-3 offset-2">
+                        <p class="mb-3 mt-0 small text-muted"></p>
+                    </div>
+                    <div class="col-3 text-right">
+                        <p class="mb-3 mt-0 small text-muted">Course</p>
+                    </div>
+                    <div class="col-3 text-right">
+                        <p class="mb-3 mt-0 small text-muted">Price</p>
+                    </div>
+                </div>
+                {% for item in profile.wish_items %}
+                    <div class="row">
+                        <div class="col-2 mb-1">
+                            <a href="{% url 'course_detail' item.course.id %}">
+                                {% if item.course.image %}
+                                    <img class="w-100" src="{{ item.course.image.url }}" alt="{{ course.name }}">
+                                {% else %}
+                                    <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ course.name }}">
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="col-7">
+                            <p class="my-0"><strong>{{ item.course.name }}</strong></p>
+                        </div>
+                        <div class="col-3 text-right">
+                            <p class="my-0 small text-muted">€{{ item.course.price }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
                 </div>
             </div>
         </div>

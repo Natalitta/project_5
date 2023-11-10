@@ -59,6 +59,19 @@
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>
                     </form>
+                    <form class="form" action="#" method="POST">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="col{% if s %}-12 mt-2{% endif %}">
+                                <a href="#" class="btn btn-blue rounded mt-5">
+                                    <span class="icon like">
+                                        <i class="fas fa-heart"></i>
+                                    </span>
+                                </a>
+                            </div>
+                            <input type="hidden" name="course_id" value="{{ course.id }}">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

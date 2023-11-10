@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
+from django.views import generic
 from django.contrib import messages
 # from django.contrib.auth.decorators import login_required
-from .models import UserProfile
+from profiles.models import UserProfile, WishItem
 
 from checkout.models import Order
 from courses.models import Course
@@ -24,3 +25,15 @@ def profile(request):
     }
 
     return render(request, template, context)
+
+
+class Wishlist(generic.View):
+    def get(self, *arg, **kwarg):
+
+        wish_items = WishItem.objects.filter(user=request.user)
+        template = 'profiles/profile.html'
+        context = {
+            'wish_items': wish_items,
+            #'on_profile_page': True
+        }
+        return render(request, template, context)
