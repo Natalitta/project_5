@@ -4,8 +4,8 @@ from django.contrib import messages
 from django.conf import settings
 
 from .forms import OrderForm
-from .models import Order, OrderItem
-from courses.models import Course
+#from .models import Order, OrderItem
+#from courses.models import Course
 #from profiles.forms import UserProfileForm
 #from profiles.models import UserProfile
 from bag.contexts import bag_contents
@@ -18,7 +18,7 @@ import stripe
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-
+    """
     if request.method == 'POST':
         bag = request.session.get('bag', {})
         form_data = {
@@ -40,7 +40,7 @@ def checkout(request):
                         order_item = OrderItem(
                             order=order,
                             course=course,
-                            quantity=item_data,
+                            # quantity=item_data,
                         )
                         order_item.save()
                 except Course.DoesNotExist:
@@ -56,25 +56,25 @@ def checkout(request):
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
-    else:
-        bag = request.session.get('bag', {})
-        if not bag:
-            messages.error(request, "There's nothing in your bag at the moment")
-            return redirect(reverse('courses'))
+    else:"""
+    bag = request.session.get('bag', {})
+    if not bag:
+        messages.error(request, "There's nothing in your bag at the moment")
+        return redirect(reverse('courses'))
 
-        current_bag = bag_contents(request)
-        total = current_bag['total']
-        stripe_total = round(total * 100)
-        stripe.api_key = stripe_secret_key
-        intent = stripe.PaymentIntent.create(
-            amount=stripe_total,
-            currency=settings.STRIPE_CURRENCY,
-        )
-        order_form = OrderForm()
+    current_bag = bag_contents(request)
+    total = current_bag['total']
+    stripe_total = round(total * 100)
+    stripe.api_key = stripe_secret_key
+    intent = stripe.PaymentIntent.create(
+        amount=stripe_total,
+        currency=settings.STRIPE_CURRENCY,
+    )
+    order_form = OrderForm()
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
-            Did you set it in your environment?')
+        Did you set it in your environment?')
 
     template = 'checkout/checkout.html'
     context = {
@@ -85,7 +85,7 @@ def checkout(request):
 
     return render(request, template, context)
 
-
+"""
 def checkout_done(request, order_number):
     
     # Handle successful checkouts
@@ -93,7 +93,7 @@ def checkout_done(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
-    """if request.user.is_authenticated:
+    if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         # Attach the user's profile to the order
         order.user_profile = profile
@@ -113,7 +113,7 @@ def checkout_done(request, order_number):
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
-"""
+
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
@@ -126,4 +126,4 @@ def checkout_done(request, order_number):
         'order': order,
     }
 
-    return render(request, template, context)
+    return render(request, template, context)"""
