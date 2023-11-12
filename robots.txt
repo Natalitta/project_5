@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://art-school-b21a3c0ad1c4.herokuapp.com/sitemap.xml
