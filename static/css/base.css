@@ -62,18 +62,14 @@ body {
     color: white !important;
 }
 
-.shop-now-button:hover,
-.shop-now-button:active,
-.shop-now-button:focus,
+.to-shop-button:hover,
+.to-shop-button:active,
+.to-shop-button:focus,
 .btn-blue:hover,
 .btn-blue:active,
 .btn-blue:focus {
     background: #ab9287;
     color: white;
-}
-
-.text-black {
-    color: #000 !important;
 }
 
 .border-black {
@@ -302,7 +298,7 @@ input[name='q']::placeholder {
         height: calc(100vh - 116px);
     }
 
-    .display-4.logo-font.text-black {
+    .display-4 {
         font-size: 2rem;
     }
 
