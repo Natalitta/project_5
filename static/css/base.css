@@ -51,14 +51,14 @@ body {
 }
 
 .btn-blue {
-    background: #2596be; !important; /* use important to override link colors for <a> elements */
-    color: white; !important;
+    background: #2596be !important; /* use important to override link colors for <a> elements */
+    color: white !important;
 }
 
 .btn-blue:hover,
 .btn-blue:active,
 .btn-blue:focus {
-    background: #ab9287; !important;
+    background: #ab9287 !important;
     color: white !important;
 }
 
