@@ -29,7 +29,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['8000-natalitta-project5-8r8w0rt01po.ws-eu106.gitpod.io',
-                'https://art-school-b21a3c0ad1c4.herokuapp.com/']
+                'https://art-school-b21a3c0ad1c4.herokuapp.com/',
+                'localhost']
 
 
 # Application definition
