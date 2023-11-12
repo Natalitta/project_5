@@ -41,7 +41,9 @@ body {
     padding: 5px;
     font-weight: 700;
 }
-
+.text-white {
+    color: #f8f9fa;
+}
 .to-shop-button {
     color: rgb(253, 253, 253);
     background: #2596be;
