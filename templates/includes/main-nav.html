@@ -6,10 +6,10 @@
             </a>
         </li>
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link mr-5" href="{% url 'courses' %}" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link mr-5" href="{% url 'courses' %}" id="all-courses-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 All Courses
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+            <div class="dropdown-menu border-0" aria-labelledby="all-courses-link">
                 <a href="{% url 'courses' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
                 <a href="{% url 'courses' %}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
                 <a href="{% url 'courses' %}" class="dropdown-item">All Courses</a>
