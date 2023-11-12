@@ -18,7 +18,7 @@
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link mr-5" href="#" id="painting-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Painting
+                Mediums
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="painting-link">
                 <a href="{% url 'courses' %}?category=watercolour" class="dropdown-item">Watercolour</a>
@@ -27,25 +27,12 @@
                 <a href="{% url 'courses' %}?category=watercolour,oil,acrylic" class="dropdown-item">All Painting</a>
             </div>
         </li>
-
-        <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link mr-5" href="#" id="drawing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Drawing
-            </a>
-            <div class="dropdown-menu border-0" aria-labelledby="drawing-link">
-                <a href="{% url 'courses' %}?category=pencils" class="dropdown-item">Pencils</a>
-                <a href="{% url 'courses' %}?category=markers" class="dropdown-item">Markers</a>
-                <a href="{% url 'courses' %}?category=pencils,markers" class="dropdown-item">All Drawing</a>
-            </div>
-        </li>
-
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Special Offers
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
                 <a href="{% url 'courses' %}?category=new" class="dropdown-item">New Courses</a>
-                <a href="{% url 'courses' %}?category=deals" class="dropdown-item">Deals</a>
                 <a href="{% url 'courses' %}?category=free_courses" class="dropdown-item">Free Courses</a>
                 <a href="{% url 'courses' %}?category=new,deals,free_courses" class="dropdown-item">All Specials</a>
             </div>
