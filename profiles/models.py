@@ -34,4 +34,4 @@ class WishItem(models.Model):
     category = models.ForeignKey('courses.Category', null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return self.course
+        return self.course.name

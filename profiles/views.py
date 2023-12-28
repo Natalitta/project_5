@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.contrib import messages
-# from django.contrib.auth.decorators import login_required
-from .models import UserProfile, WishItem
+from django.contrib.auth.decorators import login_required
+from .models import Course, UserProfile, WishItem
 from .forms import UserProfileForm
 
 from checkout.models import Order
@@ -54,13 +54,20 @@ def order_history(request, order_number):
 
     return render(request, template, context)
 
-class Wishlist(generic.View):
-    def get(self, *arg, **kwarg):
 
-        wish_items = WishItem.objects.filter(user=request.user)
-        template = 'profiles/profile.html'
-        context = {
-            'wish_items': wish_items,
-            #'on_profile_page': True
-        }
-        return render(request, template, context)
+@login_required
+def wishlist(request):
+    user = UserProfile.objects.get(user=request.user)
+    wishlist_items = WishItem.objects.filter(user=user)
+    return render(request, 'profiles/profile.html', {'wishlist_items': wishlist_items})
+
+@login_required
+def add_to_wishlist(request, course_id):
+    course = Course.objects.get(id=course_id)
+    user = UserProfile.objects.get(user=request.user)
+
+    # Check if the course is already in the user's wishlist
+    if not WishItem.objects.filter(user=user, course=course).exists():
+        WishItem.objects.create(user=user, course=course)
+
+    return redirect('course_detail', course_id=course_id)
