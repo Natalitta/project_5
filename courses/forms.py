@@ -1,6 +1,6 @@
 from django import forms
 # from .widgets import CustomClearableFileInput
-from .models import Course, Category
+from .models import Course, Category, Comment
 
 
 class CourseForm(forms.ModelForm):
@@ -19,3 +19,9 @@ class CourseForm(forms.ModelForm):
         self.fields['category'].choices = friendly_names
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-gray rounded'
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('body',)

@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Course, Category
-from .forms import CourseForm
+from .forms import CourseForm, CommentForm
 
 
 # Create your views here.
@@ -65,9 +65,12 @@ def course_detail(request, course_id):
     # A view to show individual course details
 
     course = get_object_or_404(Course, pk=course_id)
-
+    comments = course.comments.filter(approved=True).order_by("-posted_on")
     context = {
         'course': course,
+        "comments": comments,
+        "commented": False,
+        "comment_form": CommentForm()
     }
 
     return render(request, 'courses/course_detail.html', context)
@@ -138,3 +141,30 @@ def delete_course(request, course_id):
     course.delete()
     messages.success(request, 'Course deleted!')
     return redirect(reverse('courses'))
+
+
+def postComments(self, request, slug, *args, **kwargs):
+
+        queryset = Course.objects.all()
+        course = get_object_or_404(queryset)
+        comments = course.comments.filter(approved=True).order_by("-posted_on")
+
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment_form.instance.name = request.user.username
+            comment = comment_form.save(commit=False)
+            comment.course = course
+            comment.save()
+        else:
+            comment_form = CommentForm()
+
+        return render(
+            request,
+            "course_detail.html",
+            {
+                "course": course,
+                "comments": comments,
+                "commented": True,
+                "comment_form": comment_form,
+            },
+        )
