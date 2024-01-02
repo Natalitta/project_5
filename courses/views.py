@@ -143,7 +143,7 @@ def delete_course(request, course_id):
     return redirect(reverse('courses'))
 
 
-def postComments(self, request, slug, *args, **kwargs):
+    def postComments(self, request, slug, *args, **kwargs):
 
         queryset = Course.objects.all()
         course = get_object_or_404(queryset)
