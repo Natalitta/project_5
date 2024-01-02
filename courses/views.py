@@ -63,17 +63,28 @@ def all_courses(request):
 
 def course_detail(request, course_id):
     # A view to show individual course details
-
+    template_name = 'courses/course_detail.html'
     course = get_object_or_404(Course, pk=course_id)
     comments = course.comments.filter(approved=True).order_by("-posted_on")
+    new_comment = None
+    
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment_form.instance.name = request.user.username
+            new_comment = comment_form.save(commit=False)
+            new_comment.course = course
+            new_comment.save()
+            messages.success(request, 'Your comment is successfully submitted!')
+        else:
+            comment_form = CommentForm()
     context = {
         'course': course,
         "comments": comments,
-        "commented": False,
+        'new_comment': new_comment,
         "comment_form": CommentForm()
     }
-
-    return render(request, 'courses/course_detail.html', context)
+    return render(request, template_name, context)
 
 @login_required
 def add_course(request):
@@ -141,30 +152,3 @@ def delete_course(request, course_id):
     course.delete()
     messages.success(request, 'Course deleted!')
     return redirect(reverse('courses'))
-
-
-    def postComments(self, request, slug, *args, **kwargs):
-
-        queryset = Course.objects.all()
-        course = get_object_or_404(queryset)
-        comments = course.comments.filter(approved=True).order_by("-posted_on")
-
-        comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            comment_form.instance.name = request.user.username
-            comment = comment_form.save(commit=False)
-            comment.course = course
-            comment.save()
-        else:
-            comment_form = CommentForm()
-
-        return render(
-            request,
-            "course_detail.html",
-            {
-                "course": course,
-                "comments": comments,
-                "commented": True,
-                "comment_form": comment_form,
-            },
-        )

@@ -79,7 +79,7 @@
             <div class="col-md-4 card mb-4 mt-3">
                 <div class="card-body">
                     <!-- For posting a comment -->
-                    {% if commented %}
+                    {% if new_comment %}
                     <div class="alert alert-success" role="alert">
                         Your comment is awaiting approval
                     </div>
@@ -88,8 +88,8 @@
                     <h3>Leave a comment:</h3>
                     <p>Posting as: {{ user.username }}</p>
                     <form method="POST" style="margin-top: 1.3em;">
-                        {{ comment_form | crispy }}
                         {% csrf_token %}
+                        {{ comment_form | crispy }}
                         <button type="submit" class="btn btn-blue">Submit</button>
                     </form>
                     {% endif %}
