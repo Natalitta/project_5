@@ -7,11 +7,10 @@
         </li>
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link mr-5" href="{% url 'courses' %}" id="all-courses-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                All Courses
+                Courses
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-courses-link">
                 <a href="{% url 'courses' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
-                <a href="{% url 'courses' %}?sort=category&direction=asc" class="dropdown-item ">By Medium</a>
                 <a href="{% url 'courses' %}" class="dropdown-item">All Courses</a>
             </div>
         </li>
@@ -24,17 +23,25 @@
                 <a href="{% url 'courses' %}?category=watercolour" class="dropdown-item">Watercolour</a>
                 <a href="{% url 'courses' %}?category=oil" class="dropdown-item">Oil</a>
                 <a href="{% url 'courses' %}?category=acrylic" class="dropdown-item">Acrylic</a>
-                <a href="{% url 'courses' %}?category=watercolour,oil,acrylic" class="dropdown-item">All Paints</a>
+                <a href="{% url 'courses' %}?category=watercolour,oil,acrylic" class="dropdown-item">All Mediums</a>
             </div>
         </li>
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link mr-5" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Special Offers
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
                 <a href="{% url 'courses' %}?category=new" class="dropdown-item">New Courses</a>
                 <a href="{% url 'courses' %}?category=free_courses" class="dropdown-item">Free Courses</a>
-                <a href="{% url 'courses' %}?category=new,deals,free_courses" class="dropdown-item">All Specials</a>
+                <a href="{% url 'courses' %}?category=new,free_courses" class="dropdown-item">All Specials</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="logo-font font-weight-bold nav-link" href="#" id="contact-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Help
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="contact-link">
+                <a href="{% url 'contact' %}" class="dropdown-item">Contact Us</a>
             </div>
         </li>
     </ul>
