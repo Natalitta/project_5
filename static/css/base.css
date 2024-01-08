@@ -120,6 +120,12 @@ input[name='q']::placeholder {
     color: #aab7c4;
 }
 
+.footer-div {
+    background: #75645d;
+    font-size: larger;
+}
+
+
 /* ------------------------------- bootstrap toasts */
 
 .message-container {
