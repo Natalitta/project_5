@@ -57,10 +57,15 @@ body {
     color: white !important;
 }
 
-.btn-blue:hover,
-.btn-blue:active,
-.btn-blue:focus {
-    background: #ab9287 !important;
+.btn-beige {
+    background: #ab9287 !important; /* use important to override link colors for <a> elements */
+    color: white !important;
+}
+
+.btn-beige:hover,
+.btn-beige:active,
+.btn-beige:focus {
+    background: #75645d !important;
     color: white !important;
 }
 
@@ -70,7 +75,7 @@ body {
 .btn-blue:hover,
 .btn-blue:active,
 .btn-blue:focus {
-    background: #ab9287;
+    background: #ab9287 !important;
     color: white;
 }
 
