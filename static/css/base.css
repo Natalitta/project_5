@@ -27,16 +27,12 @@ body {
     background: #2596be;
     color: #f8f9fa;
 }
-.banner-free {
-   color: #2596be;
-   background: #ab9287;
-}
 
 .main-logo-link {
     width: fit-content;
 }
 .text-logo {
-    background: rgba(138,164,204, 0.7);
+    background: #ab9287;
     color: #f8f9fa;
     padding: 5px;
     font-weight: 700;
@@ -328,7 +324,4 @@ input[name='q']::placeholder {
         font-size: 1rem;
     }
 
-    #delivery-banner h4 {
-        font-size: .9rem;
-    }
 }

@@ -7,7 +7,7 @@
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <meta name="keywords" content="art classes online, learn to paint, painting video, learn oil painting, learn acrylic painting, learn watercolour">
+            <meta name="keywords" content="free art classes online, learn to paint online, painting video, learn oil painting, learn acrylic painting, learn watercolour">
             <meta name="description" content="Online Art School offers online video lessons to learn to paint pictures">
         {% endblock %}
 
@@ -112,12 +112,13 @@
                     {% include 'includes/main-nav.html' %}   
                 </nav>
             </div>
-            <div id="delivery-banner" class="row text-center">
-                <div class="col banner-free">
-                    <h4 class="logo-font my-1">Free introductory courses!</h4>                
-                </div> 
+            <div class="row text-center">
                 <div class="col banner">
-                    <h4 class="logo-font my-1">Free master-class on courses over &euro; {{ free_mc_threshold }}!</h4>                
+                    <h4 class="logo-font my-1">
+                        Painting courses for free! <br>
+                        <i class="fa fa-gift" aria-hidden="true"></i>
+                        A gift art master-class on courses over &euro; {{ free_mc_threshold }}!
+                    </h4>                
                 </div>            
             </div>
         </header>
@@ -155,14 +156,14 @@
     <!-- Footer -->
     <footer class="footer-div mt-auto py-3">
         <p class="m-0 text-center text-white">Follow us: 
-            <a class="text-white ml-3" href="https://www.facebook.com/profile.php?id=61555332935045" target="_blank" aria-label="facebook link" class="span-link">
+            <a class="text-white ml-3 span-link" href="https://www.facebook.com/profile.php?id=61555332935045" target="_blank" aria-label="facebook link" rel="noopener">
                 <i class="fab fa-facebook-square ms-3"></i>
             </a>
-            <a class="sr-only sr-only-focusable" href="https://www.facebook.com/profile.php?id=61555332935045">Link to Facebook page</a>
-            <a class="text-white ml-3" href="https://www.instagram.com/" target="_blank" aria-label="instagram link" class="span-link">
+            <a class="sr-only sr-only-focusable" href="https://www.facebook.com/profile.php?id=61555332935045" rel="noopener">Link to Facebook page</a>
+            <a class="text-white ml-3 span-link" href="https://www.instagram.com/" target="_blank" aria-label="instagram link" rel="noopener">
                 <i class="fab fa-instagram-square ms-3"></i>
             </a>
-            <a class="sr-only sr-only-focusable" href="https://www.instagram.com/">Link to Instagram page</a>
+            <a class="sr-only sr-only-focusable" href="https://www.instagram.com/" rel="noopener">Link to Instagram page</a>
         </p>
     </footer>
 </html>
