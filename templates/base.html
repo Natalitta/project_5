@@ -146,24 +146,36 @@
 
     {% block content %}
     {% endblock %}
-
+    <!-- Footer -->
+    <footer class="footer-div mt-auto py-3 container-wrapper">
+        <div class="container text-center text-white content-container">
+            <section class="footer">
+                <div class="row">
+                    <div class="col-12">
+                        <h3>Social</h3>
+                        <p>Keep up to date with all our latest offers</p>
+                        <a class="text-white ml-3 span-link" href="https://www.facebook.com/profile.php?id=61555332935045" target="_blank" aria-label="facebook link" rel="noopener">
+                            <i class="fab fa-facebook-square ms-3"></i> Follow us on Facebook!
+                        </a>
+                        <a class="sr-only sr-only-focusable" href="https://www.facebook.com/profile.php?id=61555332935045" rel="noopener">Link to Facebook page</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Subscribe!</h2>
+                        <p>Get exclusive offers and discount codes by subscribing to our monthly newsletter</p>
+                        <!-- Mailchimp signup form here -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </footer>
+    <!-- /.footer -->
     {% block postloadjs %}
     <script type="text/javascript">
         $('.toast').toast('show');
     </script>
     {% endblock %}
     </body>
-    <!-- Footer -->
-    <footer class="footer-div mt-auto py-3">
-        <p class="m-0 text-center text-white">Follow us: 
-            <a class="text-white ml-3 span-link" href="https://www.facebook.com/profile.php?id=61555332935045" target="_blank" aria-label="facebook link" rel="noopener">
-                <i class="fab fa-facebook-square ms-3"></i>
-            </a>
-            <a class="sr-only sr-only-focusable" href="https://www.facebook.com/profile.php?id=61555332935045" rel="noopener">Link to Facebook page</a>
-            <a class="text-white ml-3 span-link" href="https://www.instagram.com/" target="_blank" aria-label="instagram link" rel="noopener">
-                <i class="fab fa-instagram-square ms-3"></i>
-            </a>
-            <a class="sr-only sr-only-focusable" href="https://www.instagram.com/" rel="noopener">Link to Instagram page</a>
-        </p>
-    </footer>
 </html>
