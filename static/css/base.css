@@ -327,6 +327,7 @@ input[name='q']::placeholder {
 }
 /*Mailchimp form style*/
 #mc_embed_signup {
+    background-color: #2596be;
     clear:left; 
     font: Georgia,Arial,sans-serif; 
     width: 600px;
