@@ -26,10 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 #'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['8000-natalitta-project5-8r8w0rt01po.ws-eu107.gitpod.io',
+ALLOWED_HOSTS = ['8000-natalitta-project5-0gpue6oypj2.ws-eu110.gitpod.io',
                 'art-school-b21a3c0ad1c4.herokuapp.com',
                 'localhost']
 
