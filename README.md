@@ -1,110 +1,232 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Online Art School
 
-Welcome Natalitta,
+This is an online art school where users can find courses to learn how to paint. They can browse for the courses they are interested in and/or try free ones. 
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+<img src="media/docs/WebsiteMockup.png">
+<a href="https://art-school-b21a3c0ad1c4.herokuapp.com/" target="_blank">Link to the deployed project</a>
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+This app is created for an e-commerce B2C business model. The content focuses on individual users. Its goal is to sell art courses.
 
-## Gitpod Reminders
+## User-Experience-Design
+### The-Strategy-Plane
+#### App Goals
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+For admin: Manage the menu of courses displayed on the website, keep track of upcoming orders, edit, and delete if necessary, view user comments, approve them to be published on the site or delete.
 
-`python3 -m http.server`
 
-A blue button should appear to click: _Make Public_,
+For users: View, choose and buy courses, leave comments and subscribe to a newsletter in a simple way. 
 
-Another blue button should appear to click: _Open Browser_.
+#### Agile Planning
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+This project was developed using agile methodology by delivering small features in incremental sprints. The user stories were assigned to epics, prioritized under the labels: Must have, should have, could have. "Must have" stories were completed first to ensure that core features were completed to make the project ready to use.
 
-A blue button should appear to click: _Make Public_,
+There was created a Kanban board using GitHub projects. It can be found here: 
+<a href="https://github.com/users/Natalitta/projects/8" target="_blank">Link to the project project</a>
 
-Another blue button should appear to click: _Open Browser_.
+There were 5 milestones for user stories:
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+<img src="media/docs/milestones.jpg">
 
-To log into the Heroku toolbelt CLI:
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+## The-Scope-Plane
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+* Home page with a button to browse courses
+* Drop-down navigation menu for mobile devices
+* Restricted role based features
+* Ability to perform CRUD functionality on courses for admin
+* Responsive Design - Site should be fully functional on all devices from 320px up
 
-------
+## The-Structure-Plane
+### Web Marketing strategies
+This is an e-commerce B2C business model tat's why the content focuses on individual users.
+Content marketing, social media and emails will work well for this type of e-commerce business model.
+The following strategies were implemented:
 
-## Release History
+### Social Media Marketing
+A Facebook page was created to get attention through the use of social media.
+Social media links are listed in the footer.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+<img src="media/docs/fb.jpg">
 
-**September 20 2023:** Update Python version to 3.9.17.
+### Email Marketing
+A functionality to subscribe for a newsletter was implemented to get attention through email.
+A form to subscribe is located in the footer. It is implemented with the help of Mailchimp.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+<img src="media/docs/footer.png">
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+### SEO
+Search Engine Optimization was implemented in several ways:
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+#### Keywords
+There was a research conducted to find the best keywords using Wordstream (https://www.wordstream.com/keywords). 
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+<img src="media/docs/keywords.jpg">
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+* The keywords were added to the meta tag in the head of the base template of the app.
+* Also they were added to the content of the app, changed the h1 element from "New art courses are here" to "Online art courses to learn to paint are here" to include more keywords.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+#### Links
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+A rel attribute "noopener" was added to the social media links in the footer to tell search engines not to include them because they do not give any valuable information.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+#### Helpful files
+There were 2 files created and added to the root of the app:
+* sitemap.xml
+* robots.txt
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+## The-Structure-Plane
+### Navigation Menu
+The Navigation contains links for:
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+Home, Courses, Special Offers, Help, a search bar and My Account.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+<img src="media/docs/home_page.jpg">
+<img src="media/docs/menu.png">
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+The following navigation items are available on all pages:
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+• Home -> index.html - Visible to all
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+• Login -> login.html - Visible to logged out users
 
-------
+• Register -> signup.html - Visible to logged out users
 
-## FAQ about the uptime script
+• Logout -> logout.html - Visible to logged in users
 
-**Why have you added this script?**
+• Courses -> courses.html - Visible to all
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+• My account -> profile.html – Visible to logged in users
 
-**How will this affect me?**
+• Help -> contact.html – Visible to logged in users
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+The navigation menu is the same for all pages and displayed fully on big screens and drops down as a hamburger menu on smaller devices. It makes web application comfortably viewable on any device without taking up too much space on mobile devices.
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+### The-Skeleton-Plane
+The following wireframes were created for the app. 
+As it is an art school, images play a crucial role so the home page represents a painting the users can paint themselves if they become students of this school. 
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+Desktop version of the home page:
 
-**So….?**
+<img src="media/docs/home.jpg">
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+Mobile version:
 
-**Can I opt out?**
+<img src="media/docs/home_mob.jpg">
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+Courses pictures are hugely important for the users to choose a course, that's why they are big.
+Desktop version of the courses page:
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+<img src="media/docs/courses.jpg">
 
-**Anything more?**
+Mobile version has only one courses displayed in a row allowing users to see the picture clearly:
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+<img src="media/docs/courses_mob.jpg">
 
----
+A page with course details was planned to look the following way:
 
-Happy coding!
+<img src="media/docs/course_details.jpg">
+
+### Security
+Views were secured by using the django login required decorator. An admin restricted functionality, was secured using if user is a superuser. 
+
+All forms are protected with csrf tokens.
+
+Environment variables were stored in variables for security purposes to ensure no secret keys, api keys or sensitive information is not available to anyone. These variables were added to the heroku config vars within the project in production.
+
+### Error Pages
+#### 404 Page
+
+A 404 page has been implemented to display a custom Error page if a user navigates to a broken link.
+
+The 404 page will allow the user to easily navigate back to the main website if they direct to a broken link / missing page, without the need of the browsers back button.
+
+<img src="media/docs/404.png">
+
+### Design
+### Colour-Scheme
+
+The main color scheme of the web app is blue (#2596be). Firstly there was the main image selected and then colours were extracted from it using Image Color Picker (https://imagecolorpicker.com/) to match the main image because.
+
+<img src="media/docs/colours.jpg">
+
+### Typography
+
+The Georgia font is used throughout the site. 
+
+### Imagery
+
+The images were taken from Unsplash and Freepic which are royalty free image sites.
+
+## Technologies
+
+* HTML - templates with HTML as the main language.
+
+* CSS & Bootstrap - styled using an external CSS file and Bootstrap framework.
+
+* JavaScript - to set timeout for message alerts and redirect if cancel.
+
+* Gitpod - The app was developed using Gitpod IDE 
+
+* GitHub - The source code is hosted on GitHub
+
+* Git - Used to commit and push code during the development of the web app
+
+* Font Awesome - icons throughout the site
+
+* Favicon 
+
+* Python - the main programming language using the Django Framework.
+
+* Image Color Picker (https://imagecolorpicker.com/) - colour design
+
+* Sitemaps.com - a site map
+
+* Wordstream.com - keywords search
+
+* Mailchimp - email newsletter
+
+##  Testing
+Test cases and results are store in a separate file due to the size of the file. They can be found in <a href="TESTING.md" target="_blank">TESTING.md file</a>.
+
+## Deployment
+### Version Control
+The site was created using Gitpod and pushed to Github to the remote repository.
+
+The following git commands were used throughout development to push code to the remote repo:
+
+git add . - This command was used to add all files to the staging area before they are committed.
+
+git commit -m “commit message” - This command was used to commit changes to the local repository prepare for the final step.
+
+git push - This command was used to push all committed code to Github remote repository.
+
+### Heroku Deployment
+The site was deployed to Heroku. The deployment steps are:
+
+1. Go to Heroku and create a new app clicking "New".
+2. Choose a name and region for an app, click "Create app".
+3. Go to "Settings" and navigate to Config Vars. Add the following config variables:
+    
+    SECRET_KEY: (Your secret key)
+    DATABASE_URL: (This should already exist with add on of postgres)
+    EMAIL_HOST_USER: (email address)
+    EMAIL_HOST_PASS: (email app password)
+    CLOUNDINARY_URL: (cloudinary api url)
+
+4. Open "Deploy" tab. Select Github as the deployment method, authorize and search for repository by its name and connect.
+5. Choose Enable Automatic Deploys, main branch.
+6. Click Deploy a GitHub branch (main).
+7. The app was successfully deployed. Click View to see it.
+
+The live link can be found here: <a href="https://art-school-b21a3c0ad1c4.herokuapp.com/" target="_blank">Link to the deployed project</a>
+
+## Credits
+
+Code Institute for student template
+
+Code Institute for Boutique Ado tutorial 
+
+Unsplash and Freepic websites for royalty free images
+
+
+
