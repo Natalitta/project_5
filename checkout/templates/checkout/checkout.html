@@ -16,9 +16,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="overlay">
-
-    </div>
+    <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col">
@@ -111,7 +109,7 @@
                     </fieldset>
                     <fieldset class="px-3">
                         <legend class="fieldset-label small px-2 w-auto">Payment</legend>
-                        <!-- A Stripe card element will go here -->
+                        <!-- A Stripe card element -->
                         <div class="mb-3" id="card-element"></div>
 
                         <!-- To display form errors -->
@@ -136,12 +134,19 @@
 							<span class="icon">
 								<i class="fas fa-exclamation-circle"></i>
 							</span>
-							<span>Your card will be charged <strong>${{ total|floatformat:2 }}</strong></span>
+							<span>Your card will be charged <strong>€{{ total|floatformat:2 }}</strong></span>
 						</p>
 					</div>
                 </form>
             </div>
         </div>
+    </div>
+    <div id="loading-overlay">
+        <h1 class="text-light logo-font loading-spinner">
+            <span class="icon">
+                <i class="fa-solid fa-spinner fa-spin fa-lg"></i>
+            </span>
+        </h1>
     </div>
 {% endblock %}
 

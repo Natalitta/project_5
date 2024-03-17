@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="product-container col-10 offset-1">
+            <div class="course-container col-10 offset-1">
                 <div class="row mt-1 mb-2">
                     <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
                         <div class="sort-select-wrapper w-50">
@@ -67,7 +67,7 @@
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="lead mb-0 text-left font-weight-bold">${{ course.price }}</p>
+                                            <p class="lead mb-0 text-left font-weight-bold">€{{ course.price }}</p>
                                             {% if course.category %}
                                             <p class="small mt-1 mb-0">
                                                 <a class="text-muted" href="{% url 'courses' %}?category={{ course.category.name }}">
@@ -77,8 +77,8 @@
                                             {% endif %}
                                             {% if request.user.is_superuser %}
                                                 <small class="ml-3">
-                                                    <a href="#">Edit</a> | 
-                                                    <a class="text-danger" href="#">Delete</a>
+                                                    <a href="{% url 'edit_course' course.id %}">Edit</a> | 
+                                                    <a class="text-danger" href="{% url 'delete_course' course.id %}">Delete</a>
                                                 </small>
                                             {% endif %}
                                         </div>

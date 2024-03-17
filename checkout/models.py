@@ -25,6 +25,15 @@ class Order(models.Model):
     
         return uuid.uuid4().hex.upper()
 
+    def update_total(self):
+        
+        # To update total each time an item is added
+        
+        self.order_total = self.orderitems.aggregate(Sum('orderitem_total'))['orderitem_total__sum'] or 0
+        
+        self.total = self.order_total
+        self.save()
+
     def save(self, *args, **kwargs):
         # To override the save method for order number if it isn't set yet.
         
@@ -40,6 +49,14 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='orderitems')
     course = models.ForeignKey(Course, null=False, blank=False, on_delete=models.CASCADE)
     orderitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
+
+    def save(self, *args, **kwargs):
+        """
+        Override the original save method to set the orderitem total
+        and update the order total.
+        """
+        self.orderitem_total = self.course.price
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f'SKU {self.course.sku} on order {self.order.order_number}'

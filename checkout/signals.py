@@ -5,12 +5,13 @@ from .models import OrderItem
 
 @receiver(post_save, sender=OrderItem)
 def update_on_save(sender, instance, created, **kwargs):
-    
-    # Update order total on orderitem update/create
+
+    # To update order total on orderitem update/create
+
     instance.order.update_total()
 
 @receiver(post_delete, sender=OrderItem)
 def update_on_delete(sender, instance, **kwargs):
-    
-    # Update order total on orderitem delete
+
+    # To update order total on orderitem delete
     instance.order.update_total()

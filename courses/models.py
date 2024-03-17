@@ -1,6 +1,6 @@
 from django.db import models
 from embed_video.fields import EmbedVideoField
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Category(models.Model):
@@ -32,3 +32,16 @@ class Course(models.Model):
     def __str__(self):
         return self.name
 
+
+class Comment(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=100)
+    body = models.TextField()
+    posted_on = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
+    
+    class Meta:
+        ordering = ["posted_on"]
+
+    def __str__(self):
+        return f"Comment {self.body} by {self.name}"

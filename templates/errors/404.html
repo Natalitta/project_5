@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container header-container h-50">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-md-center h-120">
+            <div class="col-md-8">
+                <h2 class="text-logo">
+                    Sorry! The page isn't available.
+                </h2>
+                <div class="justify-content-md-center my-5">
+                    <h4>
+                        <a href="{% url 'courses' %}" 
+                            class="to-shop-button btn btn-lg rounded py-3">
+                            Return to courses
+                        </a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

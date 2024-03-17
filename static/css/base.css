@@ -27,21 +27,19 @@ body {
     background: #2596be;
     color: #f8f9fa;
 }
-.banner-free {
-   color: #2596be;
-   background: #ab9287;
-}
 
 .main-logo-link {
     width: fit-content;
 }
 .text-logo {
-    background: rgba(138,164,204, 0.7);
+    background: #ab9287;
     color: #f8f9fa;
     padding: 5px;
     font-weight: 700;
 }
-
+.text-white {
+    color: #f8f9fa;
+}
 .to-shop-button {
     color: rgb(253, 253, 253);
     background: #2596be;
@@ -51,35 +49,30 @@ body {
 }
 
 .btn-blue {
-    background: #2596be;
-    color: white;
-}
-
-.btn-outline-black {
-    background: white;
-    color: #2596be !important; /* use important to override link colors for <a> elements */
-    border: 1px solid #2596be;
-}
-
-.btn-outline-black:hover,
-.btn-outline-black:active,
-.btn-outline-black:focus {
-    background: #ab9287;
+    background: #2596be !important; /* use important to override link colors for <a> elements */
     color: white !important;
 }
 
-.shop-now-button:hover,
-.shop-now-button:active,
-.shop-now-button:focus,
-.btn-black:hover,
-.btn-black:active,
-.btn-black:focus {
-    background: #ab9287;
-    color: white;
+.btn-beige {
+    background: #ab9287 !important; /* use important to override link colors for <a> elements */
+    color: white !important;
 }
 
-.text-black {
-    color: #000 !important;
+.btn-beige:hover,
+.btn-beige:active,
+.btn-beige:focus {
+    background: #75645d !important;
+    color: white !important;
+}
+
+.to-shop-button:hover,
+.to-shop-button:active,
+.to-shop-button:focus,
+.btn-blue:hover,
+.btn-blue:active,
+.btn-blue:focus {
+    background: #ab9287 !important;
+    color: white;
 }
 
 .border-black {
@@ -122,6 +115,12 @@ a.category-badge > span.badge:hover {
 input[name='q']::placeholder {
     color: #aab7c4;
 }
+
+.footer-div {
+    background: #75645d;
+    font-size: larger;
+}
+
 
 /* ------------------------------- bootstrap toasts */
 
@@ -254,7 +253,7 @@ input[name='q']::placeholder {
 	color: #17a2b8; /* text-info */
 }
 
-/* Product Form */
+/* Course Form */
 
 .btn-file {
     position: relative;
@@ -308,7 +307,7 @@ input[name='q']::placeholder {
         height: calc(100vh - 116px);
     }
 
-    .display-4.logo-font.text-black {
+    .display-4 {
         font-size: 2rem;
     }
 
@@ -325,22 +324,11 @@ input[name='q']::placeholder {
         font-size: 1rem;
     }
 
-    #delivery-banner h4 {
-        font-size: .9rem;
-    }
-
-    .btn.btn-outline-black.rounded-0,
-    .btn.btn-black.rounded-0 {
-        padding: .375rem .375rem;
-    }
-
-    .btn.btn-outline-black.rounded-0.btn-lg,
-    .btn.btn-black.rounded-0.btn-lg {
-        padding: .375rem .375rem;
-        font-size: .75rem;
-    }
-
-    .increment-qty, .decrement-qty {
-        padding: .25rem .5rem !important;
-    }
+}
+/*Mailchimp form style*/
+#mc_embed_signup {
+    background-color: #2596be;
+    clear:left; 
+    font: Georgia,Arial,sans-serif; 
+    width: 600px;
 }
