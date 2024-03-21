@@ -86,6 +86,7 @@
                         <p class="mb-3 mt-0 small text-muted">Price</p>
                     </div>
                 </div>
+                <!--
                 <div class="row">
                 {% if wishlist_items %}
                     {% for item in wishlist_items %}
@@ -109,7 +110,30 @@
                 {% else %}
                     <p>Your wishlist is empty.</p>
                 {% endif %}
-                </div>
+                </div>-->
+                <div class="row">
+                    {% if wishlist_items %}
+                        {% for item in wishlist_items %}
+                            <div class="col-2 mb-1">
+                                <a href="{% url 'course_detail' item.course.id %}">
+                                    {% if item.course.image %}
+                                        <img class="w-100" src="{{ item.course.image.url }}" alt="{{ item.course.name }}">
+                                    {% else %}
+                                        <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.course.name }}">
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="col-7">
+                                <p class="my-0"><strong>{{ item.course.name }}</strong></p>
+                            </div>
+                            <div class="col-3 text-right">
+                                <p class="my-0 small text-muted">€{{ item.course.price }}</p>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>Your wishlist is empty.</p>
+                    {% endif %}
+                </div>                
             </div>
         </div>
         <hr>

@@ -35,3 +35,11 @@ class WishItem(models.Model):
 
     def __str__(self):
         return self.course.name
+
+
+class Wishlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('user', 'course')

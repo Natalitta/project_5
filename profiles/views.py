@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Course, UserProfile, WishItem
+from .models import Course, UserProfile, WishItem, Wishlist
 from .forms import UserProfileForm
 
 from checkout.models import Order
@@ -26,14 +26,16 @@ def profile(request):
         form = UserProfileForm(request.POST, instance=profile)
     
     orders = profile.orders.all()
-    
+    wishlist_items = Wishlist.objects.filter(user=request.user)
+    print(wishlist_items)  # Debugging line
     template = 'profiles/profile.html'
     context = {
         'form': form,
         'orders': orders,
+        'wishlist_items': wishlist_items,
         'on_profile_page': True
     }
-
+    
     return render(request, template, context)
 
 
