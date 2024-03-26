@@ -27,7 +27,6 @@ def profile(request):
     
     orders = profile.orders.all()
     wishlist_items = Wishlist.objects.filter(user=request.user)
-    print(wishlist_items)  # Debugging line
     template = 'profiles/profile.html'
     context = {
         'form': form,
@@ -61,7 +60,7 @@ def order_history(request, order_number):
 def wishlist(request):
     user = UserProfile.objects.get(user=request.user)
     wishlist_items = WishItem.objects.filter(user=user)
-    return render(request, 'profiles/profile.html', {'wishlist_items': wishlist_items})
+    return render(request, 'courses/wishlist.html', {'wishlist_items': wishlist_items})
 
 @login_required
 def add_to_wishlist(request, course_id):

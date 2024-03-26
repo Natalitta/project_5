@@ -75,11 +75,11 @@
                             </a>
                             <div class="dropdown-menu border-0" aria-labelledby="user-options">
                                 {% if request.user.is_authenticated %}
-                                    <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                                    <a href="#" class="dropdown-item">My Courses</a>
                                     {% if request.user.is_superuser %}
-                                        <a href="{% url 'add_course' %}" class="dropdown-item">Add Courses </a>
+                                        <a href="{% url 'add_course' %}" class="dropdown-item"> Management </a>
                                     {% endif %}
+                                    <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                                    <a href="{% url 'wishlist' %}" class="dropdown-item">My Wishlist</a>
                                     <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                                 {% else %}
                                     <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
@@ -116,7 +116,6 @@
             <div id="delivery-banner" class="row text-center"> 
                 <div class="col banner">
                     <h5 class="logo-font my-1">
-                        Painting courses for free! <br>
                         <i class="fa fa-gift" aria-hidden="true"></i>
                         A gift master-class on courses over &euro; {{ free_mc_threshold }}!
                     </h5>                

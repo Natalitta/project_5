@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col text-center mt-3">
+                <h2 class="">My Wishlist</h2>
+                <hr class="w-50 mb-1">
+            </div>
+        </div>
+        <div class="row">
+            <div class="course-container col-10 offset-1">
+                <div class="row mt-1 mb-2">
+                </div>
+                <div class="row">
+                    {% if wishlist_items %}
+                        <ul class="list-group mt-3">
+                            {% for item in wishlist_items %}
+                            <li class="list-group-item">
+                                <div class="row">
+                                <div class="col-md-8">
+                                    <h5>{{ item.course.title }}</h5>
+                                    <p>{{ item.course.description }}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="{% url 'course_detail' course_id=item.course.id %}" class="btn btn-primary">View Course</a>
+                                    <!-- Add a button for removing from wishlist if desired -->
+                                </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <p>Your wishlist is empty.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btt-button shadow-sm rounded border">
+        <a class="btt-link d-flex h-100">
+            <i class="fas fa-chevron-up mx-auto my-auto"></i>
+        </a>	
+    </div>
+{% endblock %}
