@@ -1,5 +1,4 @@
 from django import forms
-# from .widgets import CustomClearableFileInput
 from .models import Course, Category, Comment
 
 
@@ -8,8 +7,6 @@ class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
         fields = '__all__'
-
-    # image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -24,4 +21,10 @@ class CourseForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('body',)
+        fields = ('body', 'image')
+
+    def __init__(self, *args, **kwargs):
+        super(CommentForm, self).__init__(*args, **kwargs)
+        self.fields['body'].label = 'Tell us what you think about the course.'
+        self.fields['image'].label = 'You can share your course art.'
+        self.fields['image'].widget.attrs['accept'] = 'image/*'
