@@ -100,6 +100,7 @@
                 <h3>Comments:</h3>
                 <div class="card-body">
                     <!-- To iterate through each comment in comments -->
+                    {% if comments %}
                     {% for comment in comments %}
                     <div class="comments" style="margin: auto;">
                         <p class="font-weight-bold">
@@ -118,6 +119,7 @@
                         {% endif %}
                     </div>
                     {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>
