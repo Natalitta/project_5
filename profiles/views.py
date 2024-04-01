@@ -73,3 +73,9 @@ def add_to_wishlist(request, course_id):
 
     return redirect('course_detail', course_id=course_id)
 
+@login_required
+def remove_from_wishlist(request, item_id):
+    item = get_object_or_404(WishItem, id=item_id)
+    if item.user == request.user.userprofile:  
+        item.delete()
+    return redirect('wishlist')

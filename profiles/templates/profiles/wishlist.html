@@ -42,8 +42,14 @@
                                         <p>{{ item.course.description }}</p>
                                     </div>
                                     <div class="col-md-2">
+                                        <!-- A button for viewing the course -->
                                         <a href="{% url 'course_detail' course_id=item.course.id %}" class="btn btn-primary">View Course</a>
-                                        <!-- Add a button for removing from wishlist if desired -->
+                                        <!-- A button for removing from wishlist -->
+                                        <a class="btn btn-beige text-danger" href="{% url 'remove_from_wishlist' item.id %}">Remove 
+                                            <span class="icon like">
+                                                <i class="fas fa-heart"></i>
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
                             </li>
