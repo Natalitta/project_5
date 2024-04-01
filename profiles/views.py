@@ -60,7 +60,7 @@ def order_history(request, order_number):
 def wishlist(request):
     user = UserProfile.objects.get(user=request.user)
     wishlist_items = WishItem.objects.filter(user=user)
-    return render(request, 'courses/wishlist.html', {'wishlist_items': wishlist_items})
+    return render(request, 'profiles/wishlist.html', {'wishlist_items': wishlist_items})
 
 @login_required
 def add_to_wishlist(request, course_id):
@@ -72,3 +72,4 @@ def add_to_wishlist(request, course_id):
         WishItem.objects.create(user=user, course=course)
 
     return redirect('course_detail', course_id=course_id)
+
