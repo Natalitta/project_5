@@ -2,6 +2,7 @@ from django.db import models
 from embed_video.fields import EmbedVideoField
 from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
+from django_resized import ResizedImageField
 
 # Create your models here.
 class Category(models.Model):
@@ -38,8 +39,10 @@ class Comment(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=100)
     body = models.TextField()
-    image = models.ImageField(
+    image = ResizedImageField(
         null=True, blank=True,
+        size=[300, 300], quality=75,
+        upload_to='images/',
         validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'gif'])]
         )
     posted_on = models.DateTimeField(auto_now_add=True)

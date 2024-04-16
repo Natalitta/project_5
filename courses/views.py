@@ -69,7 +69,7 @@ def course_detail(request, course_id):
     new_comment = None
     
     if request.method == 'POST':
-        comment_form = CommentForm(data=request.POST)
+        comment_form = CommentForm(request.POST, request.FILES)
         if comment_form.is_valid():
             comment_form.instance.name = request.user.username
             new_comment = comment_form.save(commit=False)

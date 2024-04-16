@@ -86,7 +86,7 @@
                     {% else %}
                     {% if user.is_authenticated %}
                     <h3>Leave a comment:</h3>
-                    <p>Posting as: {{ user.username }}</p>
+                    <p>from: {{ user.username }}</p>
                     <form method="POST" enctype="multipart/form-data" style="margin-top: 1.3em;">
                         {% csrf_token %}
                         {{ comment_form | crispy }}
