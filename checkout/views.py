@@ -1,7 +1,8 @@
+from django.conf import settings
+from django.contrib import messages
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
-from django.contrib import messages
-from django.conf import settings
 
 from .forms import OrderForm
 from .models import Order, OrderItem
@@ -136,6 +137,23 @@ def checkout_done(request, order_number):
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
+
+    # Collect course URLs for the email
+    course_urls = []
+    for order_item in order.orderitems.all():
+        course = order_item.course
+        if course:
+            course_urls.append(course.video_url)
+        #course_urls.append(order_item.course.video_url)
+    
+    #send_mail
+    subject='Thank you for your order!'
+    message= f'Your order has been successully processed. Your order number is {order_number}. \
+        You can view your course(s) here: \n'
+    message += '\n'.join(course_urls)
+    from_email=settings.EMAIL_HOST_USER
+    to_list=[order.email,]
+    send_mail(subject,message,from_email,to_list,fail_silently=True)
 
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
