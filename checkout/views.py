@@ -145,23 +145,15 @@ def checkout_done(request, order_number):
         course = order_item.course
         if course:
             course_urls.append(course.video_url)
-        #course_urls.append(order_item.course.video_url)
+        course_urls.append(order_item.course.video_url)
     
-    html_content = render_to_string('confirmation_email.html', {
-        'username': user.username,
-        'email': user.email,
-        'video_url': course_urls
-    })
-
     #send_mail
-    send_mail(
-        'Thank you for your order!',
-        '',
-        settings.EMAIL_HOST_USER,
-        [order.email,],
-        html_message=html_content,
-        fail_silently=True)
-    return HttpResponse('Confirmation email sent successfully')
+    subject='Thank you for your order!'
+    message= f'Your order has been successully processed. \n Your order number is {order_number}. \n You can view your course(s) here: \n'
+    message += '\n'.join(course_urls)
+    from_email=settings.EMAIL_HOST_USER
+    to_list=[order.email,]
+    send_mail(subject,message,from_email,to_list,fail_silently=True)
 
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
