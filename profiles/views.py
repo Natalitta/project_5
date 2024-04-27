@@ -70,7 +70,7 @@ def add_to_wishlist(request, course_id):
     # Check if the course is already in the user's wishlist
     if not WishItem.objects.filter(user=user, course=course).exists():
         WishItem.objects.create(user=user, course=course)
-
+    messages.success(request, 'Added to your wishlist!')
     return redirect('course_detail', course_id=course_id)
 
 @login_required
@@ -78,4 +78,5 @@ def remove_from_wishlist(request, item_id):
     item = get_object_or_404(WishItem, id=item_id)
     if item.user == request.user.userprofile:  
         item.delete()
+    messages.success(request, 'Your wishlist is successfully updated!')
     return redirect('wishlist')
