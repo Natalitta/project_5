@@ -151,7 +151,7 @@ def checkout_done(request, order_number):
     #send_mail
     subject='Thank you for your order!'
     if order.order_total >= free_mc:
-        message= f'Your order has been successully processed. \n Your order number is {order_number}. \n Your free gift is: <a href="https://www.youtube.com/watch?v=92-y1zsZ6JI"></a>\n You can view your course(s) here: '
+        message= f'Your order has been successully processed. \n Your order number is {order_number}. \n Your free gift is: https://www.youtube.com/watch?v=92-y1zsZ6JI \n You can view your course(s) here: '
         message += '\n'.join(course_urls)
     else:
         message= f'Your order has been successully processed. \n Your order number is {order_number}. \n You can view your course(s) here: '
