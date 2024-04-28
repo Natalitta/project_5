@@ -25,14 +25,13 @@ class StripeWH_Handler:
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-        
+
         send_mail(
             subject,
             body,
             settings.DEFAULT_FROM_EMAIL,
             [student_email]
-        )        
-
+        )
     def handle_event(self, event):
         # Handle generic/ unknown event
         return HttpResponse(
@@ -51,9 +50,9 @@ class StripeWH_Handler:
             intent.latest_charge
         )
 
-        billing_details = stripe_charge.billing_details # updated
-        total = round(stripe_charge.amount / 100, 2) # updated
-        
+        billing_details = stripe_charge.billing_details
+        total = round(stripe_charge.amount / 100, 2)
+
         # Update profile information if save_info was checked
         profile = None
         username = intent.metadata.username
@@ -69,9 +68,9 @@ class StripeWH_Handler:
         while attempt <= 5:
             try:
                 order = Order.objects.get(
-                    full_name__iexact=shipping_details.name,
+                    full_name__iexact=billing_details.name,
                     email__iexact=billing_details.email,
-                    phone_number__iexact=shipping_details.phone,
+                    phone_number__iexact=billing_details.phone,
                     total=total,
                     original_bag=bag,
                     stripe_pid=pid,
@@ -116,7 +115,6 @@ class StripeWH_Handler:
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
             status=200)
-
 
     def handle_payment_intent_payment_failed(self, event):
         # Handle payment_intent.failed webhook from stripe

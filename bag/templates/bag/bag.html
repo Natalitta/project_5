@@ -30,10 +30,9 @@
                         <table class="table table-sm table-borderless">
                             <thead class="">
                                 <tr>
-                                    <th scope="col">Course Info</th>
                                     <th scope="col"></th>
+                                    <th scope="col">Info</th>
                                     <th scope="col">Price</th>
-                                    <th scope="col"></th>
                                     <th scope="col">Edit</th>
                                 </tr>
                             </thead>
@@ -54,7 +53,7 @@
                                         <p class="my-0">€{{ item.course.price }}</p>
                                     </td>
                                     <td class="py-3 w-25">
-                                        <a class="remove-button text-danger float-right" href="{% url 'remove_bag_item' item.item_id %}"
+                                        <a class="remove-button text-danger" href="{% url 'remove_bag_item' item.item_id %}"
                                         id="remove_{{ item.item_id }}">
                                             <small><i class="fa-solid fa-trash"></i> Remove</small>
                                         </a>
@@ -71,20 +70,19 @@
                                     {% endif %}
                                 </td>
                                 <td class="py-3">
-                                    <p class="my-0"><strong>Sunset in the Mountains</strong></p>
+                                    <p class="my-0"><strong> Sunset in the Mountains</strong></p>
                                     <p class="my-0 small text-muted">SKU: gift-mc </p>
                                 </td>
                                 <td class="py-3">
                                     <p class="my-0">€0.00</p>
                                 </td>
-                                <td class="py-3 w-25 float-right">
+                                <td class="py-3 w-25">
                                     <i class="fas fa-gift fa-lg"></i>
-                                    </a>
                                 </td>
                             </tr>
                             {% endif %}
                             <tr>
-                                <td colspan="5" class="pt-5 text-right">
+                                <td colspan="4" class="pt-5 text-right">
                                     {% if free_mc %}
                                         <h6><i class="fas fa-gift fa-lg"></i> Free master-class: <strong>Sunset in the Mountains</strong></h6>
                                     {% endif %}
@@ -97,7 +95,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="5" class="text-right">
+                                <td colspan="4" class="text-right">
                                     <a href="{% url 'courses' %}" class="btn btn-blue rounded btn-lg">
                                         <span class="icon">
                                             <i class="fa-solid fa-chevron-left"></i>

@@ -329,13 +329,11 @@ input[name='q']::placeholder {
 #embed_signup {
     background-color: #4e433e;
     clear:left; 
-    font: Georgia,Arial,sans-serif; 
     width: auto;
     padding: 2px;
     padding-left: 5%;
 }
-#socials {
-    font: Georgia,Arial,sans-serif; 
+#socials { 
     width: auto;
     padding: 2px;
     padding-left: 5%;

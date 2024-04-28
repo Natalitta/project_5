@@ -2,7 +2,9 @@ from django.conf import settings
 from django.contrib import messages
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404, HttpResponse
+)
 from django.views.decorators.http import require_POST
 
 from .forms import OrderForm
@@ -32,11 +34,12 @@ def cache_checkout_data(request):
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
 
+
 def checkout(request):
 
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-    
+
     if request.method == 'POST':
         bag = request.session.get('bag', {})
         form_data = {
@@ -63,21 +66,23 @@ def checkout(request):
                         order_item.save()
                 except Course.DoesNotExist:
                     messages.error(request, (
-                        "One of the courses in your bag wasn't found in our database. "
+                        "One of the courses in your bag wasn't found. "
                         "Please contact us for assistance!")
                     )
                     order.delete()
                     return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_done', args=[order.order_number]))
+            return redirect(
+                reverse('checkout_done', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
         bag = request.session.get('bag', {})
         if not bag:
-            messages.error(request, "There's nothing in your bag at the moment")
+            messages.error(
+                request, "There's nothing in your bag at the moment")
             return redirect(reverse('courses'))
 
         current_bag = bag_contents(request)
@@ -116,15 +121,14 @@ def checkout(request):
 
 
 def checkout_done(request, order_number):
-    
+
     # Handle successful checkouts
-    
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
-        
+
         # Attach the user's profile to the order
         order.user_profile = profile
         order.save()
@@ -147,18 +151,18 @@ def checkout_done(request, order_number):
             course_urls.append(course.video_url)
         course_urls.append(order_item.course.video_url)
     free_mc = settings.FREE_MC_THRESHOLD
-    
-    #send_mail
+
+    # send_mail
     subject='Thank you for your order!'
     if order.order_total >= free_mc:
-        message= f'Your order has been successully processed. \n Your order number is {order_number}. \n Your free gift is: https://www.youtube.com/watch?v=92-y1zsZ6JI \n You can view your course(s) here: '
+        message = f'Your order has been successully processed. \n Your order number is {order_number}. \n Your free gift is: https://www.youtube.com/watch?v=92-y1zsZ6JI \n You can view your course(s) here: '
         message += '\n'.join(course_urls)
     else:
-        message= f'Your order has been successully processed. \n Your order number is {order_number}. \n You can view your course(s) here: '
+        message = f'Your order has been successully processed. \n Your order number is {order_number}. \n You can view your course(s) here: '
         message += '\n'.join(course_urls)
-    from_email=settings.EMAIL_HOST_USER
-    to_list=[order.email,]
-    send_mail(subject,message,from_email,to_list,fail_silently=True)
+    from_email = settings.EMAIL_HOST_USER
+    to_list = [order.email,]
+    send_mail(subject, message, from_email, to_list, fail_silently=True)
 
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \

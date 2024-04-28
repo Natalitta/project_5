@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.conf import settings
 from .models import Contact
 
+
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -33,7 +34,7 @@ def contact(request):
                     settings.DEFAULT_FROM_EMAIL,
                     [settings.EMAIL_HOST_USER]
                 )
-				# Add success message
+                # Add success message
                 messages.success(request, 'Message sent successfully.')
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')

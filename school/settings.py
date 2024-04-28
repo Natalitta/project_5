@@ -28,11 +28,13 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#'DEVELOPMENT' in os.environ
+# 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['8000-natalitta-project5-8r8w0rt01po.ws-eu110.gitpod.io',
-                'art-school-b21a3c0ad1c4.herokuapp.com',
-                'localhost']
+ALLOWED_HOSTS = [
+    '8000-natalitta-project5-8r8w0rt01po.ws-eu110.gitpod.io',
+    'art-school-b21a3c0ad1c4.herokuapp.com',
+    'localhost'
+]
 
 
 # Application definition
@@ -54,8 +56,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'contact',
-
-     # Other
+    # Other
     'crispy_forms',
     'storages',
 ]
@@ -204,7 +205,7 @@ if 'USE_AWS' in os.environ:
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
         'CacheControl': 'max-age=94608000',
     }
-    
+
     # Bucket Config
     AWS_STORAGE_BUCKET_NAME = 'art-school'
     AWS_S3_REGION_NAME = 'eu-west-1'
@@ -247,4 +248,3 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
-

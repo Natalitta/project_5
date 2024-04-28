@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
 from django_resized import ResizedImageField
 
-# Create your models here.
+
 class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
@@ -20,7 +20,8 @@ class Category(models.Model):
 
 
 class Course(models.Model):
-    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(
+        'Category', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
     description = models.TextField()
@@ -36,18 +37,23 @@ class Course(models.Model):
 
 
 class Comment(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='comments')
+    course = models.ForeignKey(
+        Course, on_delete=models.CASCADE,
+        related_name='comments')
     name = models.CharField(max_length=100)
     body = models.TextField()
     image = ResizedImageField(
         null=True, blank=True,
         size=[300, 300], quality=75,
         upload_to='images/',
-        validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'gif'])]
+        validators=[
+            FileExtensionValidator(
+                allowed_extensions=['jpg', 'jpeg', 'png', 'gif'])
+            ]
         )
     posted_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
-    
+
     class Meta:
         ordering = ["posted_on"]
 

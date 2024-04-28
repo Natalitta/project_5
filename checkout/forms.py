@@ -22,12 +22,12 @@ class OrderForm(forms.ModelForm):
 
         # To remove labels generated automatically
         for field in self.fields:
-            
+
             if self.fields[field].required:
                 placeholder = f'{placeholders[field]} *'
             else:
                 placeholder = placeholders[field]
-                
+
             self.fields[field].widget.attrs['placeholder'] = placeholder
 
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'

@@ -43,7 +43,8 @@ def all_courses(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You should enter some search criteria!")
+                messages.error(
+                    request, "You should enter some search criteria!")
                 return redirect(reverse('courses'))
 
             queries = Q(name__icontains=query) | Q(description__icontains=query)
@@ -67,7 +68,7 @@ def course_detail(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
     comments = course.comments.filter(approved=True).order_by("-posted_on")
     new_comment = None
-    
+
     if request.method == 'POST':
         comment_form = CommentForm(request.POST, request.FILES)
         if comment_form.is_valid():
@@ -75,7 +76,8 @@ def course_detail(request, course_id):
             new_comment = comment_form.save(commit=False)
             new_comment.course = course
             new_comment.save()
-            messages.success(request, 'Your comment is successfully submitted!')
+            messages.success(
+                request, 'Your comment is successfully submitted!')
         else:
             comment_form = CommentForm()
     context = {
@@ -85,6 +87,7 @@ def course_detail(request, course_id):
         "comment_form": CommentForm()
     }
     return render(request, template_name, context)
+
 
 @login_required
 def add_course(request):
@@ -100,7 +103,8 @@ def add_course(request):
             messages.success(request, 'The course is successfully added!')
             return redirect(reverse('course_detail', args=[course.id]))
         else:
-            messages.error(request, 'Adding failed. Please ensure the form is valid.')
+            messages.error(
+                request, 'Adding failed. Please ensure the form is valid.')
     else:
         form = CourseForm()
 
@@ -127,7 +131,9 @@ def edit_course(request, course_id):
             messages.success(request, 'The course is successfully updated!')
             return redirect(reverse('course_detail', args=[course.id]))
         else:
-            messages.error(request, 'Failed to update course. Please ensure the form is valid.')
+            messages.error(
+                request, 'Failed to update course. Please ensure the form is valid.'
+                )
     else:
         form = CourseForm(instance=course)
         messages.info(request, f'You are editing {course.name}')
@@ -147,7 +153,7 @@ def delete_course(request, course_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only school admins can do that.')
         return redirect(reverse('home'))
-        
+
     course = get_object_or_404(Course, pk=course_id)
     course.delete()
     messages.success(request, 'Course deleted!')
