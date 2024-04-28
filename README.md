@@ -21,7 +21,7 @@ For users: View, choose and buy courses, leave comments and subscribe to a newsl
 This project was developed using agile methodology by delivering small features in incremental sprints. The user stories were assigned to epics, prioritized under the labels: Must have, should have, could have. "Must have" stories were completed first to ensure that core features were completed to make the project ready to use.
 
 There was created a Kanban board using GitHub projects. It can be found here: 
-<a href="https://github.com/users/Natalitta/projects/8" target="_blank">Link to the project project</a>
+<a href="https://github.com/users/Natalitta/projects/8" target="_blank">Link to the project</a>
 
 There were 5 milestones for user stories:
 
@@ -34,6 +34,7 @@ There were 5 milestones for user stories:
 * Drop-down navigation menu for mobile devices
 * Restricted role based features
 * Ability to perform CRUD functionality on courses for admin
+* Ability to perform some CRUD functionality on wish items for users
 * Responsive Design - Site should be fully functional on all devices from 320px up
 
 ## The-Structure-Plane
@@ -52,7 +53,7 @@ Social media links are listed in the footer.
 A functionality to subscribe for a newsletter was implemented to get attention through email.
 A form to subscribe is located in the footer. It is implemented with the help of Mailchimp.
 
-<img src="media/docs/footer.png">
+<img src="media/docs/footer.jpg">
 
 ### SEO
 Search Engine Optimization was implemented in several ways:
@@ -80,8 +81,7 @@ The Navigation contains links for:
 
 Home, Courses, Special Offers, Help, a search bar and My Account.
 
-<img src="media/docs/home_page.jpg">
-<img src="media/docs/menu.png">
+<img src="media/docs/home-page.jpg">
 
 The following navigation items are available on all pages:
 
@@ -97,9 +97,17 @@ The following navigation items are available on all pages:
 
 • My account -> profile.html – Visible to logged in users
 
-• Help -> contact.html – Visible to logged in users
+• Management -> add_course.html - Visible only to the admin
+
+• My wishlist -> wishlist.html – Visible to logged in users
+
+• Help -> contact.html – Visible to all
+
+<img src="media/docs/menu.png">
 
 The navigation menu is the same for all pages and displayed fully on big screens and drops down as a hamburger menu on smaller devices. It makes web application comfortably viewable on any device without taking up too much space on mobile devices.
+
+<img src="media/docs/home-page-mob.jpg">
 
 ### The-Skeleton-Plane
 The following wireframes were created for the app. 
@@ -118,7 +126,7 @@ Desktop version of the courses page:
 
 <img src="media/docs/courses.jpg">
 
-Mobile version has only one courses displayed in a row allowing users to see the picture clearly:
+Mobile version has only one course displayed in a row allowing users to see the picture clearly:
 
 <img src="media/docs/courses_mob.jpg">
 
@@ -142,7 +150,7 @@ The 404 page will allow the user to easily navigate back to the main website if 
 
 <img src="media/docs/404.png">
 
-### Design
+## Design
 ### Colour-Scheme
 
 The main color scheme of the web app is blue (#2596be). Firstly there was the main image selected and then colours were extracted from it using Image Color Picker (https://imagecolorpicker.com/) to match the main image because.
@@ -171,19 +179,21 @@ The images were taken from Unsplash and Freepic which are royalty free image sit
 
 * Git - Used to commit and push code during the development of the web app
 
+* Python - the main programming language using the Django Framework.
+
+* Stripe payments
+
+* Mailchimp - email newsletter
+
 * Font Awesome - icons throughout the site
 
 * Favicon 
-
-* Python - the main programming language using the Django Framework.
-
-* Image Color Picker (https://imagecolorpicker.com/) - colour design
 
 * Sitemaps.com - a site map
 
 * Wordstream.com - keywords search
 
-* Mailchimp - email newsletter
+* Image Color Picker (https://imagecolorpicker.com/) - colour design
 
 ##  Testing
 Test cases and results are store in a separate file due to the size of the file. They can be found in <a href="TESTING.md" target="_blank">TESTING.md file</a>.
@@ -228,6 +238,4 @@ Code Institute for Boutique Ado tutorial
 
 Unsplash and Freepic websites for royalty free images
 
-
-
-
+https://learndjango.com/tutorials/django-file-and-image-uploads-tutorial for tutorial how to upload images in comments form.

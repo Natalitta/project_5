@@ -153,7 +153,7 @@ def checkout_done(request, order_number):
     free_mc = settings.FREE_MC_THRESHOLD
 
     # send_mail
-    subject='Thank you for your order!'
+    subject = 'Thank you for your order!'
     if order.order_total >= free_mc:
         message = f'Your order has been successully processed. \n Your order number is {order_number}. \n Your free gift is: https://www.youtube.com/watch?v=92-y1zsZ6JI \n You can view your course(s) here: '
         message += '\n'.join(course_urls)
@@ -161,7 +161,7 @@ def checkout_done(request, order_number):
         message = f'Your order has been successully processed. \n Your order number is {order_number}. \n You can view your course(s) here: '
         message += '\n'.join(course_urls)
     from_email = settings.EMAIL_HOST_USER
-    to_list = [order.email,]
+    to_list = [order.email, ]
     send_mail(subject, message, from_email, to_list, fail_silently=True)
 
     messages.success(request, f'Order successfully processed! \
