@@ -18,7 +18,7 @@ The pages were run through the w3 CSS Validator. CSS code passed validation.
 
 ### Java Script
 
-There is not much javascript. The code passed validation.
+The javascript code passed validation.
 
 <img src="media/docs/js-valid.jpg">
 
